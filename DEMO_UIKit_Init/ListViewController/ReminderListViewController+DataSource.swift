@@ -40,14 +40,21 @@ extension ReminderListViewController {
 
     func updateReminder(_ reminder: Reminder) {
         let index = reminders.indexOfReminder(withId: reminder.id)
-        reminders[index] = reminder
+        self.reminders[index] = reminder
     }
 
+    func completeReminder(withId id: Reminder.ID) {
+        var reminder = reminder(withId: id) // Fetch Reminder
+        reminder.isComplete.toggle()
+        self.updateReminder(reminder)
+    }
     private func doneButtonConfiguration(for reminder: Reminder) -> UICellAccessory.CustomViewConfiguration {
         let symbolName = reminder.isComplete ? "circle.fill" : "circle"
         let symbolConfiguration = UIImage.SymbolConfiguration(textStyle: .title1)
         let image = UIImage(systemName: symbolName, withConfiguration: symbolConfiguration)
-        let button = UIButton()
+        let button = ReminderDoneButton()
+        button.addTarget(self, action: #selector(didPressDoneButton(_:)), for: .touchUpInside)
+        button.id = reminder.id
         button.setImage(image, for: .normal)
         return UICellAccessory.CustomViewConfiguration(
             customView: button,
