@@ -70,6 +70,7 @@
 		130979962AB068C700BABBB9 /* DEMO_UIKit_Init */ = {
 			isa = PBXGroup;
 			children = (
+				F48488ED2AB0B27900320583 /* DetailViewController */,
 				130979B02AB08A3000BABBB9 /* ListViewController */,
 				130979AB2AB06C1A00BABBB9 /* Models */,
 				130979972AB068C700BABBB9 /* AppDelegate.swift */,
@@ -99,9 +100,16 @@
 				130979B12AB08A6C00BABBB9 /* ReminderListViewController+DataSource.swift */,
 				F48488E72AB0A72100320583 /* ReminderDoneButton.swift */,
 				F48488E92AB0A7DD00320583 /* ReminderListViewController+Action.swift */,
-				F48488EB2AB0B10E00320583 /* ReminderViewController.swift */,
 			);
 			path = ListViewController;
+			sourceTree = "<group>";
+		};
+		F48488ED2AB0B27900320583 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F48488EB2AB0B10E00320583 /* ReminderViewController.swift */,
+			);
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
