@@ -35,19 +35,7 @@ class ReminderListViewController: UICollectionViewController {
                 item: itemIdentifier
             )
         }
-
-        var snapshot = Snapshot()
-        snapshot.appendSections([0])
-        /*
-         var reminderTitles = [String]()
-         for reminder in Reminder.sampleData {
-             reminderTitles.append(reminder.title)
-         }
-         snapshot.appendItems(reminderTitles)
-         */
-        // Same approach in 1 line
-        snapshot.appendItems(Reminder.sampleData.map { $0.id })
-        dataSource.apply(snapshot) // Applying the snapshot reflects the changes in the user interface.
+        self.updateSnapshot()
         collectionView.dataSource = dataSource // Assign the data source to the collection view.
     }
 

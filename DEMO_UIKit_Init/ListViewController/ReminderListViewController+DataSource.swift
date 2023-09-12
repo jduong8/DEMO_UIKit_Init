@@ -12,6 +12,24 @@ extension ReminderListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Reminder.ID>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Reminder.ID>
 
+    func updateSnapshot(reloading ids: [Reminder.ID] = []) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        /*
+         var reminderTitles = [String]()
+         for reminder in Reminder.sampleData {
+             reminderTitles.append(reminder.title)
+         }
+         snapshot.appendItems(reminderTitles)
+         */
+        // Same approach in 1 line
+        snapshot.appendItems(Reminder.sampleData.map { $0.id })
+        if !ids.isEmpty {
+            snapshot.reloadItems(ids)
+        }
+        dataSource.apply(snapshot) // Applying the snapshot reflects the changes in the user interface.
+    }
+
     func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, id: Reminder.ID) {
         let reminder = reminder(withId: id)
         var contentConfiguration = cell.defaultContentConfiguration()
@@ -47,6 +65,7 @@ extension ReminderListViewController {
         var reminder = reminder(withId: id) // Fetch Reminder
         reminder.isComplete.toggle()
         self.updateReminder(reminder)
+        self.updateSnapshot(reloading: [id])
     }
     private func doneButtonConfiguration(for reminder: Reminder) -> UICellAccessory.CustomViewConfiguration {
         let symbolName = reminder.isComplete ? "circle.fill" : "circle"
