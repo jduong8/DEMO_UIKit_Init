@@ -11,6 +11,8 @@ class ReminderListViewController: UICollectionViewController {
     // Type aliases are helpful for referring to an existing type with a name that’s more expressive.
     typealias DataSource = UICollectionViewDiffableDataSource<Int, String>
     
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, String>
+    
     /*
      Use implicitly unwrapped optionals only when you know that the optional will have a value.
      Otherwise, you risk triggering a runtime error that immediately terminates the app.
@@ -42,6 +44,20 @@ class ReminderListViewController: UICollectionViewController {
                 item: itemIdentifier
             )
         }
+
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        /*
+         var reminderTitles = [String]()
+         for reminder in Reminder.sampleData {
+             reminderTitles.append(reminder.title)
+         }
+         snapshot.appendItems(reminderTitles)
+         */
+        // Same approach in 1 line
+        snapshot.appendItems(Reminder.sampleData.map { $0.title })
+        dataSource.apply(snapshot) // Applying the snapshot reflects the changes in the user interface.
+        collectionView.dataSource = dataSource // Assign the data source to the collection view.
     }
 
     private func listLayout() -> UICollectionViewCompositionalLayout {
