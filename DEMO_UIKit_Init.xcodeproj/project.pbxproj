@@ -13,6 +13,7 @@
 		1309799F2AB068C700BABBB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1309799D2AB068C700BABBB9 /* Main.storyboard */; };
 		130979A12AB068C800BABBB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 130979A02AB068C800BABBB9 /* Assets.xcassets */; };
 		130979A42AB068C800BABBB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130979A22AB068C800BABBB9 /* LaunchScreen.storyboard */; };
+		130979AD2AB06C4700BABBB9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130979AC2AB06C4700BABBB9 /* Reminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		130979A02AB068C800BABBB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		130979A32AB068C800BABBB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		130979A52AB068C800BABBB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		130979AC2AB06C4700BABBB9 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		130979962AB068C700BABBB9 /* DEMO_UIKit_Init */ = {
 			isa = PBXGroup;
 			children = (
+				130979AB2AB06C1A00BABBB9 /* Models */,
 				130979972AB068C700BABBB9 /* AppDelegate.swift */,
 				130979992AB068C700BABBB9 /* SceneDelegate.swift */,
 				1309799B2AB068C700BABBB9 /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				130979A52AB068C800BABBB9 /* Info.plist */,
 			);
 			path = DEMO_UIKit_Init;
+			sourceTree = "<group>";
+		};
+		130979AB2AB06C1A00BABBB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				130979AC2AB06C4700BABBB9 /* Reminder.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 				1309799C2AB068C700BABBB9 /* ViewController.swift in Sources */,
 				130979982AB068C700BABBB9 /* AppDelegate.swift in Sources */,
 				1309799A2AB068C700BABBB9 /* SceneDelegate.swift in Sources */,
+				130979AD2AB06C4700BABBB9 /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
