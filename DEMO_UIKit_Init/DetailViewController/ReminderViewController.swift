@@ -9,6 +9,7 @@ import UIKit
 
 class ReminderViewController: UICollectionViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Int, Row>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Row>
 
     var reminder: Reminder
     private var dataSource: DataSource!
@@ -37,6 +38,7 @@ class ReminderViewController: UICollectionViewController {
                 item: itemIdentifier
             )
         }
+        self.updateSnapshot()
     }
 
     func cellRegistrationHandler(
@@ -63,5 +65,19 @@ class ReminderViewController: UICollectionViewController {
         case .title:
             return reminder.title
         }
+    }
+
+    private func updateSnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(
+            [
+                Row.time,
+                Row.date,
+                Row.time,
+                Row.notes
+            ],
+            toSection: 0)
+        dataSource.apply(snapshot)
     }
 }
