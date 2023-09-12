@@ -14,6 +14,16 @@ class ReminderListViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         let listLayout = listLayout()
         collectionView.collectionViewLayout = listLayout
+        
+        // Cell registration specifies how to configure the content and appearance of a cell.
+        let cellRegistration = UICollectionView.CellRegistration {
+            (cell: UICollectionViewListCell, indexPath: IndexPath, itemIdentifier: String) in
+            let reminder = Reminder.sampleData[indexPath.item] // Retrieve the reminder corresponding to the item.
+            /// defaultContentConfiguration() creates a content configuration with the predefined system style.
+            var contentConfiguration = cell.defaultContentConfiguration() // Retrieve the cell’s default content configuration.
+            contentConfiguration.text = reminder.title // Assign reminder.title to the content configuration text.
+            cell.contentConfiguration = contentConfiguration // Assign the content configuration to the cell.
+        }
     }
 
     private func listLayout() -> UICollectionViewCompositionalLayout {
