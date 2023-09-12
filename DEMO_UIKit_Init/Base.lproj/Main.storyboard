@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Reminder List View Controller-->
         <scene sceneID="eW0-Wi-sOI">
             <objects>
-                <collectionViewController id="Ejt-xF-dwo" sceneMemberID="viewController">
+                <collectionViewController id="Ejt-xF-dwo" customClass="ReminderListViewController" customModule="DEMO_UIKit_Init" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rdr-Sj-q7E">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
