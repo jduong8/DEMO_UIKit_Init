@@ -14,4 +14,10 @@ extension UIColor {
         blue: 0.9,
         alpha: 1.0
     )
+    static let todayListCellDoneButtonTint = UIColor(
+        red: 0.129,
+        green: 0.900,
+        blue: 0,
+        alpha: 1.0
+    )
 }
