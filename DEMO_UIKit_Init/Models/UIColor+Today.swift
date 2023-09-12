@@ -9,12 +9,18 @@ import UIKit
 
 extension UIColor {
     static let todayListCellBackground = UIColor(
-        red: 0.358,
-        green: 0.730,
-        blue: 0.9,
+        red: 0,
+        green: 0.5,
+        blue: 0.593,
         alpha: 1.0
     )
     static let todayListCellDoneButtonTint = UIColor(
+        red: 0.129,
+        green: 0.900,
+        blue: 0,
+        alpha: 1.0
+    )
+    static let todayPrimaryTint = UIColor(
         red: 0.129,
         green: 0.900,
         blue: 0,
