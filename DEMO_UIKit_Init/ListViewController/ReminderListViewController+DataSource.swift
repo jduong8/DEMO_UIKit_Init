@@ -8,13 +8,12 @@
 import UIKit
 
 extension ReminderListViewController {
-    // Type aliases are helpful for referring to an existing type with a name that’s more expressive.
-    typealias DataSource = UICollectionViewDiffableDataSource<Int, String>
-    
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, String>
-        
-    func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, id: String) {
-        let reminder = Reminder.sampleData[indexPath.item]
+
+    typealias DataSource = UICollectionViewDiffableDataSource<Int, Reminder.ID>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Reminder.ID>
+
+    func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, id: Reminder.ID) {
+        let reminder = reminders[indexPath.item]
         var contentConfiguration = cell.defaultContentConfiguration()
         contentConfiguration.text = reminder.title
         contentConfiguration.secondaryText = reminder.dueDate.dayAndTimeText
