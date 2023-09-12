@@ -8,6 +8,15 @@
 import UIKit
 
 class ReminderListViewController: UICollectionViewController {
+    // Type aliases are helpful for referring to an existing type with a name that’s more expressive.
+    typealias DataSource = UICollectionViewDiffableDataSource<Int, String>
+    
+    /*
+     Use implicitly unwrapped optionals only when you know that the optional will have a value.
+     Otherwise, you risk triggering a runtime error that immediately terminates the app.
+     You’ll initialize the data source in the next step to guarantee that the optional has a value.
+     */
+    var dataSource: DataSource! // Add a dataSource property that implicitly unwraps a DataSource.
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +32,15 @@ class ReminderListViewController: UICollectionViewController {
             var contentConfiguration = cell.defaultContentConfiguration() // Retrieve the cell’s default content configuration.
             contentConfiguration.text = reminder.title // Assign reminder.title to the content configuration text.
             cell.contentConfiguration = contentConfiguration // Assign the content configuration to the cell.
+        }
+        
+        dataSource = DataSource(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: String) in
+            return collectionView.dequeueConfiguredReusableCell(
+                using: cellRegistration,
+                for: indexPath,
+                item: itemIdentifier
+            )
         }
     }
 
