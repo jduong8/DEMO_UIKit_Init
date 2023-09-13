@@ -39,8 +39,18 @@ class ReminderViewController: UICollectionViewController {
             )
         }
         navigationItem.title = NSLocalizedString(reminder.title, comment: "Reminder view controller title")
-        
+        navigationItem.rightBarButtonItem = editButtonItem
+
         self.updateSnapshotForViewing()
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if editing {
+            self.updateSnapshotForEditing()
+        } else {
+            self.updateSnapshotForViewing()
+        }
     }
 
     func cellRegistrationHandler(
