@@ -35,6 +35,8 @@ class ReminderListViewController: UICollectionViewController {
                 item: itemIdentifier
             )
         }
+        navigationItem.title = NSLocalizedString("Reminders List", comment: "Reminder view controller title")
+
         self.updateSnapshot()
         collectionView.dataSource = dataSource // Assign the data source to the collection view.
     }
