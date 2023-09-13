@@ -87,7 +87,7 @@ class ReminderViewController: UICollectionViewController {
         var snapshot = Snapshot()
         snapshot.appendSections([.view])
         snapshot.appendItems(
-            [Row.header(""), Row.title, Row.date, Row.time, Row.notes],
+            [Row.title, Row.date, Row.time, Row.notes],
             toSection: .view)
         dataSource.apply(snapshot)
     }
