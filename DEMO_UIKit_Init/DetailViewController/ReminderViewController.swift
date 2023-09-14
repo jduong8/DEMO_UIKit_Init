@@ -38,6 +38,9 @@ class ReminderViewController: UICollectionViewController {
                 item: itemIdentifier
             )
         }
+        if #available(iOS 16, *) {
+            navigationItem.style = .navigator
+        }
         navigationItem.title = NSLocalizedString(reminder.title, comment: "Reminder view controller title")
         navigationItem.rightBarButtonItem = editButtonItem
 
@@ -69,7 +72,7 @@ class ReminderViewController: UICollectionViewController {
         case (.date, .editableDate(let date)):
             cell.contentConfiguration = self.dateConfiguration(for: cell, with: date)
         case (.notes, .editableText(let notes)):
-            cell.contentConfiguration = self.notesconfiguration(for: cell, with: notes)
+            cell.contentConfiguration = self.notesConfiguration(for: cell, with: notes)
         default:
             fatalError("Unexpected combination of section and row.")
         }
