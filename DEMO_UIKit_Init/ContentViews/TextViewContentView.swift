@@ -10,6 +10,7 @@ import UIKit
 class TextViewContentView: UIView, UIContentView {
     struct Configuration: UIContentConfiguration {
         var text: String? = ""
+        var onChange: (String) -> Void = { _ in }
         
         func makeContentView() -> UIView & UIContentView {
              return TextViewContentView(self)
@@ -17,7 +18,11 @@ class TextViewContentView: UIView, UIContentView {
     }
     
     let textView = UITextView()
-    var configuration: UIContentConfiguration
+    var configuration: UIContentConfiguration {
+        didSet {
+            configure(configuration: configuration)
+        }
+    }
     
     override var intrinsicContentSize: CGSize {
         CGSize(width: 0, height: 44)
@@ -28,6 +33,7 @@ class TextViewContentView: UIView, UIContentView {
         super.init(frame: .zero)
         addPinnedSubView(textView, height: 200)
         textView.backgroundColor = nil
+        textView.delegate = self // assigning this content view to be the delegate of the text view control. As such, it monitors the text view control for user interactions and responds accordingly.
         textView.font = UIFont.preferredFont(forTextStyle: .body)
     }
     
@@ -44,5 +50,12 @@ class TextViewContentView: UIView, UIContentView {
 extension UICollectionViewListCell {
     func textViewConfiguration() -> TextViewContentView.Configuration {
         TextViewContentView.Configuration()
+    }
+}
+
+extension TextViewContentView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        guard let configuration = configuration as? TextViewContentView.Configuration else { return }
+        configuration.onChange(textView.text)
     }
 }
